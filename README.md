@@ -22,3 +22,11 @@ I use it with `//go:generate simple-bundle` and [modd](https://github.com/cortes
 - `-source`       : source directory
 - `-out`          : output directory
 - `trailing args` : exclusion -> simple `must not contain` logic
+
+---
+
+### Simple
+
+- [simple-mini](https://github.com/romainmenke/simple-mini)
+- [simple-bundle](https://github.com/romainmenke/simple-bundle)
+- [simple-gzip](https://github.com/romainmenke/simple-gzip)
