@@ -27,7 +27,7 @@ func main() {
 		panic(err)
 	}
 
-	extensions := make(map[string]string)
+	extensions := make(map[string][]byte)
 FILE_ITERATOR:
 	for _, f := range files {
 		if !isFile(sourceDir + f.Name()) {
@@ -48,8 +48,9 @@ FILE_ITERATOR:
 		extension := nameComponents[len(nameComponents)-1]
 
 		content := readFile(sourceDir + f.Name())
-		if content != "" {
-			extensions[extension] = extensions[extension] + content + newLine
+		if len(content) != 0 {
+			content = append(content, 10)
+			extensions[extension] = append(extensions[extension], content...)
 		}
 	}
 
@@ -59,8 +60,8 @@ FILE_ITERATOR:
 
 }
 
-func writeFile(content string, extension string, out string) {
-	if content == "" {
+func writeFile(content []byte, extension string, out string) {
+	if len(content) == 0 {
 		return
 	}
 
@@ -70,7 +71,7 @@ func writeFile(content string, extension string, out string) {
 	}
 }
 
-func readFile(name string) string {
+func readFile(name string) []byte {
 	buf := bytes.NewBuffer(nil)
 	file, err := os.Open(name)
 	if err != nil {
@@ -81,11 +82,8 @@ func readFile(name string) string {
 		panic(err)
 	}
 	file.Close()
-	return string(buf.Bytes())
+	return buf.Bytes()
 }
-
-const newLine = `
-`
 
 func isFile(path string) bool {
 	fileInfo, err := os.Stat(path)
