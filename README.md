@@ -30,3 +30,4 @@ I use it with `//go:generate simple-bundle` and [modd](https://github.com/cortes
 - [simple-mini](https://github.com/romainmenke/simple-mini)
 - [simple-bundle](https://github.com/romainmenke/simple-bundle)
 - [simple-gzip](https://github.com/romainmenke/simple-gzip)
+- [simple-template](https://github.com/romainmenke/simple-template)
